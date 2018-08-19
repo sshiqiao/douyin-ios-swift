@@ -1,0 +1,6 @@
+module Starscream [system] {
+  umbrella header "Starscream-umbrella.h"
+
+  export *
+  module * { export * }
+}

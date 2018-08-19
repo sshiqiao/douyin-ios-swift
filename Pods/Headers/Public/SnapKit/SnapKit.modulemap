@@ -1,0 +1,6 @@
+module SnapKit [system] {
+  umbrella header "SnapKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
