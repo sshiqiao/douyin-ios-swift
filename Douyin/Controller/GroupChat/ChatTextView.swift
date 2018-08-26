@@ -354,6 +354,8 @@ extension ChatTextView:EmotionSelectorDelegate {
     }
     
     func onSelect(emotionKey: String) {
+        placeHolderLabel.isHidden = true
+        
         let location = textView.selectedRange.location
         textView.attributedText = EmotionHelper.insertEmotion(str: textView.attributedText, index: location, key: emotionKey)
         textView.selectedRange = NSRange.init(location: location + 1, length: 0)

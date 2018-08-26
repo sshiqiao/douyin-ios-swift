@@ -83,7 +83,6 @@ enum MenuActionType: Int {
 
 //UDID MD5_UDID
 
-//注：广告id代替udid
 //let UDID:String = (UIDevice.current.identifierForVendor?.uuidString)!
 let UDID:String = ASIdentifierManager.shared().advertisingIdentifier.uuidString
 let MD5_UDID:String = UDID.md5()

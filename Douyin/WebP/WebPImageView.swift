@@ -21,9 +21,6 @@ class WebPImageView: UIImageView {
     override var image: UIImage? {
         set {
             super.image = newValue
-//            if newValue == nil {
-//                self.layer.contents = nil
-//            }
             
             _image = newValue as? WebPImage
             

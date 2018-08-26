@@ -981,7 +981,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.swift.douyin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.douyin.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Douyin/Douyin+bridging+Header.h";
 				SWIFT_VERSION = 4.0;
@@ -1002,7 +1002,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.swift.douyin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.douyin.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Douyin/Douyin+bridging+Header.h";
 				SWIFT_VERSION = 4.0;

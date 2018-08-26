@@ -170,7 +170,7 @@ class UserInfoHeader: UICollectionReusableView {
     }
     
     func initInfoView() {
-        nickName.text = "NickName"
+        nickName.text = "name"
         nickName.textColor = ColorWhite
         nickName.font = SuperBigBoldFont
         containerView.addSubview(nickName)
@@ -180,7 +180,7 @@ class UserInfoHeader: UICollectionReusableView {
             make.right.equalTo(self.settingIcon)
         }
         
-        douyinNum.text = "抖音号：No.01"
+        douyinNum.text = "抖音号："
         douyinNum.textColor = ColorWhite
         douyinNum.font = SmallFont
         containerView.addSubview(douyinNum)
@@ -242,6 +242,7 @@ class UserInfoHeader: UICollectionReusableView {
         }
         
         constellation.textColor = ColorWhite
+        constellation.text = "座"
         constellation.font = SuperSmallFont
         constellation.isScrollEnabled = false
         constellation.isEditable = false

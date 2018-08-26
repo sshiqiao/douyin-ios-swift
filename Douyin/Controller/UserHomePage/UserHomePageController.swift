@@ -56,13 +56,13 @@ class UserHomePageController: BaseViewController {
         self.setStatusBarBackgroundColor(color: ColorClear)
         self.setStatusBarStyle(style: .lightContent)
         self.setStatusBarHidden(hidden: false)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onNetworkStatusChange(notification:)), name: Notification.Name(rawValue: NetworkStatesChangeNotification), object: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initCollectionView()
-        loadUserData()
-        loadData(page: pageIndex)
     }
     
     func initCollectionView() {
@@ -94,6 +94,17 @@ class UserHomePageController: BaseViewController {
             self?.loadData(page: self?.pageIndex ?? 0)
         }
         collectionView?.addSubview(loadMore!)
+    }
+    
+    @objc func onNetworkStatusChange(notification:NSNotification) {
+        if !NetworkManager.isNotReachableStatus(status: NetworkManager.networkStatus()) {
+            if user == nil {
+                loadUserData()
+            }
+            if favoriteAwemes.count == 0 && workAwemes.count == 0 {
+                loadData(page: pageIndex)
+            }
+        }
     }
     
     func loadUserData() {
