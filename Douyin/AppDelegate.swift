@@ -35,6 +35,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        let touchLocation = (event?.allTouches)?.first?.location(in: self.window)
+        let statusBarFrame = UIApplication.shared.statusBarFrame
+        if statusBarFrame.contains(touchLocation!) {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: StatusBarTouchBeginNotification), object: nil)
+        }
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

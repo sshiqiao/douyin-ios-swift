@@ -51,6 +51,8 @@ let DELETE_COMMENT_BY_ID_URL:String = "comment/delete"
 //获取评论列表
 let FIND_COMMENT_BY_PAGE_URL:String = "comment/list"
 
+//notification
+let StatusBarTouchBeginNotification:String = "StatusBarTouchBeginNotification"
 
 //enum
 enum LoadingType: Int {

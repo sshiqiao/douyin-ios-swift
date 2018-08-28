@@ -41,7 +41,7 @@ class AwemeListController: BaseViewController {
         
         self.awemes = data
         self.data.append(data[currentIndex])
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(statusBarTouchBegin), name: NSNotification.Name(rawValue: StatusBarTouchBeginNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(applicationBecomeActive), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(applicationEnterBackground), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
     }
@@ -153,6 +153,7 @@ class AwemeListController: BaseViewController {
             }
         }
     }
+    
 }
 
 extension AwemeListController:UITableViewDelegate, UITableViewDataSource {
@@ -218,6 +219,10 @@ extension AwemeListController {
         }else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
+    }
+    
+    @objc func statusBarTouchBegin() {
+        currentIndex = 0
     }
     
     @objc func applicationBecomeActive() {
