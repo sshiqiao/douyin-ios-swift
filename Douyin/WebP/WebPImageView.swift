@@ -21,20 +21,17 @@ class WebPImageView: UIImageView {
     override var image: UIImage? {
         set {
             super.image = newValue
-            
             _image = newValue as? WebPImage
             
             displayLink?.isPaused = true
             WebPQueueManager.shared().cancelQueue(queue: requestQueue)
             firstFrameQueue.cancelAllOperations()
-
             
             time = 0
             operationCount = 0
             displayLink?.isPaused = false
 
             decodeFrames()
-
         }
         get {
             return _image

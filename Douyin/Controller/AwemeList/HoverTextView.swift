@@ -50,6 +50,8 @@ class HoverTextView:UIView {
         self.backgroundColor = ColorClear
         self.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(handleGuesture(sender:))))
         
+        keyboardHeight = safeAreaBottomHeight;
+        
         textView.backgroundColor = ColorClear
         textView.clipsToBounds = false
         textView.textColor = ColorWhite
@@ -105,13 +107,13 @@ class HoverTextView:UIView {
     }
     
     func updateTextViewFrame() {
-        let textViewHeight = keyboardHeight > 0 ? textHeight + 2*TOP_BOTTOM_INSET : (textView.font?.lineHeight ?? 0) + 2*TOP_BOTTOM_INSET
+        let textViewHeight = keyboardHeight > safeAreaBottomHeight ? textHeight + 2*TOP_BOTTOM_INSET : (textView.font?.lineHeight ?? 0) + 2*TOP_BOTTOM_INSET
         self.textView.frame = CGRect.init(x: 0, y: screenHeight - keyboardHeight - textViewHeight, width: screenWidth, height: textViewHeight)
     }
     
     func updateRightViewsFrame() {
         var originX = screenWidth
-        originX -= keyboardHeight > 0 ? 50 : (textView.text.count > 0 ? 50 : 0)
+        originX -= keyboardHeight > safeAreaBottomHeight ? 50 : (textView.text.count > 0 ? 50 : 0)
         UIView.animate(withDuration: 0.25) {
             self.sendImageView.frame = CGRect.init(x: originX, y: 0, width: 50, height: 50)
             self.atImageView.frame = CGRect.init(x: self.sendImageView.frame.minX - 50, y: 0, width: 50, height: 50)
@@ -119,8 +121,8 @@ class HoverTextView:UIView {
     }
     
     func updateIconState() {
-        editImageView.image = keyboardHeight > 0 ? UIImage.init(named: "ic90Pen1") : (textView.text.count > 0 ? UIImage.init(named: "ic90Pen1") : UIImage.init(named: "ic30Pen1"))
-        atImageView.image = keyboardHeight > 0 ? UIImage.init(named: "ic90WhiteAt") : (textView.text.count > 0 ? UIImage.init(named: "ic90WhiteAt") : UIImage.init(named: "ic30WhiteAt"))
+        editImageView.image = keyboardHeight > safeAreaBottomHeight ? UIImage.init(named: "ic90Pen1") : (textView.text.count > 0 ? UIImage.init(named: "ic90Pen1") : UIImage.init(named: "ic30Pen1"))
+        atImageView.image = keyboardHeight > safeAreaBottomHeight ? UIImage.init(named: "ic90WhiteAt") : (textView.text.count > 0 ? UIImage.init(named: "ic90WhiteAt") : UIImage.init(named: "ic30WhiteAt"))
         sendImageView.image = textView.text.count > 0 ? UIImage.init(named: "ic30RedSend") : UIImage.init(named: "ic30WhiteSend")
     }
     
@@ -144,7 +146,7 @@ extension HoverTextView {
     
     @objc func keyboardWillHide(notification:Notification) {
         self.backgroundColor = ColorClear
-        keyboardHeight = 0
+        keyboardHeight = safeAreaBottomHeight
         updateViewFrameAndState()
         hoverDelegate?.hoverTextViewStateChange(isHover: false)
     }

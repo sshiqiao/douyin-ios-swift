@@ -69,7 +69,7 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
         close.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(handleGuesture(sender:))))
         container.addSubview(close)
         
-        tableView = UITableView.init(frame: CGRect.init(x: 0, y: 35, width: screenWidth, height: screenHeight*3/4 - 35 - 50), style: .grouped)
+        tableView = UITableView.init(frame: CGRect.init(x: 0, y: 35, width: screenWidth, height: screenHeight*3/4 - 35 - 50 - safeAreaBottomHeight), style: .grouped)
         tableView.backgroundColor = ColorClear
         tableView.tableHeaderView = UIView.init(frame: CGRect.init(origin: .zero, size: CGSize.init(width: self.tableView.bounds.width, height: 0.01)))
         tableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 50, right: 0)
@@ -379,11 +379,12 @@ protocol CommentTextViewDelegate:NSObjectProtocol {
 
 class CommentTextView:UIView, UITextViewDelegate {
     
+    
     var leftInset:CGFloat = 15
     var rightInset:CGFloat = 60
     var topBottomInset:CGFloat = 15
     
-    
+    var container = UIView.init()
     var textView = UITextView.init()
     var delegate:CommentTextViewDelegate?
     
@@ -409,8 +410,13 @@ class CommentTextView:UIView, UITextViewDelegate {
         self.backgroundColor = ColorClear
         self.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(handleGuestrue(sender:))))
         
+        self.addSubview(container)
+        container.backgroundColor = ColorBlackAlpha40
+        
+        keyboardHeight = safeAreaBottomHeight
+        
         textView = UITextView.init()
-        textView.backgroundColor = ColorBlackAlpha40
+        textView.backgroundColor = ColorClear
         textView.clipsToBounds = false
         textView.textColor = ColorWhite
         textView.font = BigFont
@@ -432,7 +438,7 @@ class CommentTextView:UIView, UITextViewDelegate {
         textView.addSubview(atImageView)
         
         textView.delegate = self
-        self.addSubview(textView)
+        container.addSubview(textView)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -440,37 +446,36 @@ class CommentTextView:UIView, UITextViewDelegate {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        updateViewFrame()
-    }
-    
-    func updateViewFrame() {
-        updateTextViewFrame()
+        
         atImageView.frame = CGRect.init(x: screenWidth - 50, y: 0, width: 50, height: 50)
         let rounded = UIBezierPath.init(roundedRect: self.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize.init(width: 10.0, height: 10.0))
         let shape = CAShapeLayer.init()
         shape.path = rounded.cgPath
-        textView.layer.mask = shape
+        container.layer.mask = shape
+        
+        updateTextViewFrame()
     }
     
     func updateTextViewFrame() {
-        let textViewHeight = keyboardHeight > 0 ? textHeight + 2 * topBottomInset : (textView.font?.lineHeight ?? 0) + 2*topBottomInset
-        textView.frame = CGRect.init(x: 0, y: screenHeight - keyboardHeight - textViewHeight, width: screenWidth, height: textViewHeight)
+        let textViewHeight = keyboardHeight > safeAreaBottomHeight ? textHeight + 2 * topBottomInset : (textView.font?.lineHeight ?? 0) + 2*topBottomInset
+        textView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: textViewHeight)
+        container.frame = CGRect.init(x: 0, y: screenHeight - keyboardHeight - textViewHeight, width: screenWidth, height: textViewHeight + keyboardHeight)
     }
     
     @objc func keyboardWillShow(notification:Notification) {
         keyboardHeight = notification.keyBoardHeight()
         updateTextViewFrame()
         atImageView.image = UIImage.init(named: "iconBlackaBefore")
-        textView.backgroundColor = ColorWhite
+        container.backgroundColor = ColorWhite
         textView.textColor = ColorBlack
         self.backgroundColor = ColorBlackAlpha60
     }
     
     @objc func keyboardWillHide(notification:Notification) {
-        keyboardHeight = 0
+        keyboardHeight = safeAreaBottomHeight
         updateTextViewFrame()
         atImageView.image = UIImage.init(named: "iconWhiteaBefore")
-        textView.backgroundColor = ColorBlackAlpha40
+        container.backgroundColor = ColorBlackAlpha40
         textView.textColor = ColorWhite
         self.backgroundColor = ColorClear
     }

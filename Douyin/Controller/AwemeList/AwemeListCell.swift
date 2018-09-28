@@ -169,11 +169,11 @@ class AwemeListCell: UITableViewCell {
         gradientLayer.frame = CGRect.init(x: 0, y: self.bounds.height - 500, width: self.bounds.width, height: 500)
         CATransaction.commit()
 
-        playerStatusBar.frame = CGRect.init(x: self.bounds.midX - 0.5, y: self.bounds.maxY - 49.5, width: 1.0, height: 1)
+        playerStatusBar.frame = CGRect.init(x: self.bounds.midX - 0.5, y: self.bounds.maxY - 49.5 - safeAreaBottomHeight, width: 1.0, height: 1)
         
         musicIcon.snp.makeConstraints { make in
             make.left.equalTo(self)
-            make.bottom.equalTo(self).inset(60)
+            make.bottom.equalTo(self).inset(60 + safeAreaBottomHeight)
             make.width.equalTo(30)
             make.height.equalTo(25)
         }

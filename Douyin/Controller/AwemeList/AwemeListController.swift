@@ -73,7 +73,8 @@ class AwemeListController: BaseViewController {
     }
     
     func setUpView() {
-        tableView = UITableView.init(frame: self.view.frame)
+        tableView = UITableView.init(frame: CGRect.init(x: 0, y: -screenHeight, width: screenWidth, height: screenHeight * 5))
+        tableView?.contentInset = UIEdgeInsetsMake(screenHeight, 0, screenHeight * 3, 0);
         tableView?.backgroundColor = ColorClear
         tableView?.delegate = self
         tableView?.dataSource = self
@@ -205,7 +206,7 @@ extension AwemeListController {
             isCurPlayerPause = false
             weak var cell = tableView?.cellForRow(at: IndexPath.init(row: currentIndex, section: 0)) as? AwemeListCell
             if cell?.isPlayerReady ?? false {
-                cell?.play()
+                cell?.replay()
             } else {
                 AVPlayerManager.shared().pauseAll()
                 cell?.onPlayerReady = {[weak self] in

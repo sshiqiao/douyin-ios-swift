@@ -13,7 +13,7 @@
 
 
 @implementation WebPImage
-- (instancetype) initWithData:(NSData *)data {
+- (instancetype)initWithData:(NSData *)data {
     self = [super init];
     _imageData = data;
     
@@ -48,9 +48,11 @@
 
 - (WebPFrame *)decodeCurFrame {
     if(_frames.count > 0) {
-        _curDecodeIndex = _curDecodeIndex % _frames.count;
-        _curDisplayFrame = _frames[_curDecodeIndex];
-        _curDisplayFrame.image = [self decodeWebPImageAtIndex:_curDecodeIndex++];
+        @synchronized (self) {
+            _curDecodeIndex = _curDecodeIndex % _frames.count;
+            _curDisplayFrame = _frames[_curDecodeIndex];
+            _curDisplayFrame.image = [self decodeWebPImageAtIndex:_curDecodeIndex++];
+        }
         return _curDisplayFrame;
     }
     return nil;
@@ -122,6 +124,7 @@ static void freeWebpFrameImageData(void *info, const void *data, size_t size) {
             WebPDemuxReleaseIterator(&iter);
         }
     }
+    WebPDemuxDelete(demux);
 }
 
 - (UIImage *)decodeWebPImageAtIndex:(NSInteger)index {
@@ -144,12 +147,16 @@ static void freeWebpFrameImageData(void *info, const void *data, size_t size) {
     CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
     
     VP8StatusCode status = WebPDecode(frame.bytes, frame.size, &config);
-    if (status != VP8_STATUS_OK)
+    if (status != VP8_STATUS_OK) {
+        CGColorSpaceRelease(colorSpaceRef);
         return nil;
+    }
     int imageWidth, imageHeight;
     uint8_t *data = WebPDecodeRGBA(frame.bytes, frame.size, &imageWidth, &imageHeight);
-    if (data == NULL)
+    if (data == NULL) {
+        CGColorSpaceRelease(colorSpaceRef);
         return nil;
+    }
     CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, data, imageWidth * imageHeight * 4, freeWebpFrameImageData);
     CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault | kCGImageAlphaLast;
     CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;

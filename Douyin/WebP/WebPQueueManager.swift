@@ -61,14 +61,10 @@ class WebPQueueManager: NSObject {
     //对当前并发的所有队列进行处理，保证正在执行的队列数量不超过最大执行的队列数
     func processQueues() {
         for (index, queue) in requestQueueArray.enumerated() {
-            if(requestQueueArray.count <= maxQueueCount) {
+            if(index < maxQueueCount) {
                 suspendQueue(queue: queue, suspended: false)
             }else {
-                if((requestQueueArray.count/2 - maxQueueCount/2) <= index && index <= (requestQueueArray.count/2 + maxQueueCount/2)) {
-                    suspendQueue(queue: queue, suspended: false)
-                }else {
-                    suspendQueue(queue: queue, suspended: true)
-                }
+                suspendQueue(queue: queue, suspended: true)
             }
         }
     }

@@ -69,7 +69,7 @@ class UserHomePageController: BaseViewController {
         itemWidth = (screenWidth - CGFloat(Int(screenWidth) % 3)) / 3.0 - 1.0
         itemHeight =  itemWidth * 1.3
         
-        let layout = HoverViewFlowLayout.init(navHeight: self.navagationBarHeight() + statusBarHeight)
+        let layout = HoverViewFlowLayout.init(navHeight: safeAreaTopHeight)
         layout.minimumLineSpacing = 1;
         layout.minimumInteritemSpacing = 0;
         collectionView = UICollectionView.init(frame: screenFrame, collectionViewLayout: layout)

@@ -115,7 +115,7 @@ class LoadMoreControl:UIControl {
         superView = self.superview as? UIScrollView
         if edgeInsets == nil {
             edgeInsets = self.superView?.contentInset
-            edgeInsets?.bottom += 50
+            edgeInsets?.bottom += (50 + safeAreaBottomHeight)
             self.superView?.contentInset = edgeInsets ?? .zero
             superView?.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
         }

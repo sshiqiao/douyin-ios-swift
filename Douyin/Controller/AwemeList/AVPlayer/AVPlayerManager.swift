@@ -58,8 +58,14 @@ class AVPlayerManager: NSObject {
     }
     
     func replay(player:AVPlayer) {
+        for object in playerArray {
+            object.pause()
+        }
         if playerArray.contains(player) {
             player.seek(to: kCMTimeZero)
+            play(player: player)
+        } else {
+            playerArray.append(player)
             play(player: player)
         }
     }

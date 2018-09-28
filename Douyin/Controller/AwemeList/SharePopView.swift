@@ -36,7 +36,7 @@ class SharePopView:UIView {
         "不感兴趣"]
     
     var container = UIView.init()
-    var cancel = UILabel.init()
+    var cancel = UIButton.init()
     
     init() {
         super.init(frame: screenFrame)
@@ -51,11 +51,11 @@ class SharePopView:UIView {
     
     func initSubView() {
         self.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(handleGuesture(sender:))))
-        container.frame = CGRect.init(x: 0, y: screenHeight, width: screenWidth, height: 280)
+        container.frame = CGRect.init(x: 0, y: screenHeight, width: screenWidth, height: 280 + safeAreaBottomHeight)
         container.backgroundColor = ColorBlackAlpha60
         self.addSubview(container)
         
-        let rounded = UIBezierPath.init(roundedRect: CGRect.init(origin: .zero, size: CGSize.init(width: screenWidth, height: 280)), byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize.init(width: 10.0, height: 10.0))
+        let rounded = UIBezierPath.init(roundedRect: container.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize.init(width: 10.0, height: 10.0))
         let shape = CAShapeLayer.init()
         shape.path = rounded.cgPath
         container.layer.mask = shape
@@ -107,11 +107,11 @@ class SharePopView:UIView {
             bottomScrollView.addSubview(item)
         }
         
-        cancel.frame = CGRect.init(x: 0, y: 230, width: screenWidth, height: 50)
-        cancel.textAlignment = .center
-        cancel.text = "取消"
-        cancel.textColor = ColorWhite
-        cancel.font = BigFont
+        cancel.frame = CGRect.init(x: 0, y: 230, width: screenWidth, height: 50 + safeAreaBottomHeight)
+        cancel.titleEdgeInsets = UIEdgeInsetsMake(-safeAreaBottomHeight, 0, 0, 0)
+        cancel.setTitle("取消", for: .normal)
+        cancel.setTitleColor(ColorWhite, for: .normal)
+        cancel.titleLabel?.font = BigFont
         cancel.backgroundColor = ColorGrayLight
         container.addSubview(cancel)
         

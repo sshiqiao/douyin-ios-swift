@@ -9,7 +9,7 @@
 import Foundation
 import Photos
 
-let PHOTO_SELECTOR_HEIGHT:CGFloat = 220
+let PHOTO_SELECTOR_HEIGHT:CGFloat = 220 + safeAreaBottomHeight
 let PHOTO_ITEM_HEIGHT:CGFloat = 170
 
 protocol PhotoSelectorDelegate:NSObjectProtocol {
@@ -71,7 +71,7 @@ class PhotoSelector:UIView, UICollectionViewDelegate, UICollectionViewDataSource
         collectionView?.register(PhotoCell.classForCoder(), forCellWithReuseIdentifier: PHOTO_CELL)
         self.addSubview(collectionView!)
         
-        bottomView.frame = CGRect.init(x: 0, y: (collectionView?.frame.maxY)! + 2.5, width: screenWidth, height: 45)
+        bottomView.frame = CGRect.init(x: 0, y: (collectionView?.frame.maxY)! + 2.5, width: screenWidth, height: 45 + safeAreaBottomHeight)
         bottomView.backgroundColor = ColorWhite
         self.addSubview(bottomView)
         

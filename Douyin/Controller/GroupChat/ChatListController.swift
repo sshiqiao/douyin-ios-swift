@@ -68,7 +68,7 @@ class ChatListController: BaseViewController {
     }
     
     func setUpView() {
-        tableView = UITableView.init(frame: CGRect.init(x: 0, y: self.navagationBarHeight() + statusBarHeight, width: screenWidth, height: screenHeight - (self.navagationBarHeight() + statusBarHeight) - 10))
+        tableView = UITableView.init(frame: CGRect.init(x: 0, y: safeAreaTopHeight, width: screenWidth, height: screenHeight - (self.navagationBarHeight() + statusBarHeight) - 10 - safeAreaBottomHeight))
         tableView?.backgroundColor = ColorClear
         tableView?.delegate = self
         tableView?.dataSource = self

@@ -69,6 +69,8 @@ class ChatTextView:UIView {
         container.backgroundColor = ColorThemeGrayDark
         self.addSubview(container)
         
+        containerBoardHeight = safeAreaBottomHeight
+        
         textView.frame = CGRect.init(x: 0, y: screenHeight, width: screenWidth, height: 0)
         textView.backgroundColor = ColorClear
         textView.clipsToBounds = true
@@ -109,7 +111,7 @@ class ChatTextView:UIView {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "containerBoardHeight" {
-            if containerBoardHeight == 0 {
+            if containerBoardHeight == safeAreaBottomHeight {
                 container.backgroundColor = ColorThemeGrayDark
                 textView.textColor = ColorWhite
                 
@@ -151,7 +153,7 @@ class ChatTextView:UIView {
     }
     
     func updateContainerFrame() {
-        let textViewHeight = containerBoardHeight > 0 ? textHeight + 2*TOP_BOTTOM_INSET : BigFont.lineHeight + 2*TOP_BOTTOM_INSET
+        let textViewHeight = containerBoardHeight > safeAreaBottomHeight ? textHeight + 2*TOP_BOTTOM_INSET : BigFont.lineHeight + 2*TOP_BOTTOM_INSET
         textView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: textViewHeight)
         UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
             self.container.frame = CGRect.init(x: 0, y: screenHeight - self.containerBoardHeight - textViewHeight, width: screenWidth, height: self.containerBoardHeight + textViewHeight)
@@ -209,8 +211,9 @@ class ChatTextView:UIView {
     
     func hideContainerBoard() {
         editMessageType = .EditNoneMessage;
-        containerBoardHeight = 0
+        containerBoardHeight = safeAreaBottomHeight
         updateContainerFrame()
+        updateSelectorFrame(animated: true)
         textView.resignFirstResponder()
         emotionBtn.isSelected = false
         photoBtn.isSelected = false

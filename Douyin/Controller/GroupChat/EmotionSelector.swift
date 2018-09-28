@@ -8,7 +8,7 @@
 
 import Foundation
 
-let EMOTION_SELECTOR_HEIGHT:CGFloat = 220
+let EMOTION_SELECTOR_HEIGHT:CGFloat = 220 + safeAreaBottomHeight
 let EMOTION_CELL = "EmotionCell"
 
 protocol EmotionSelectorDelegate:NSObjectProtocol {
@@ -79,15 +79,18 @@ class EmotionSelector:UIView,UICollectionViewDelegate,UICollectionViewDataSource
             pointViews.append(pointView)
             self.addSubview(pointView)
             
-            bottomView = UIView.init(frame: CGRect.init(x: 0, y: (collectionView?.frame.height)! + 25, width: screenWidth, height: 45))
+            bottomView = UIView.init(frame: CGRect.init(x: 0, y: (collectionView?.frame.height)! + 25, width: screenWidth, height: 45 + safeAreaBottomHeight))
             bottomView.backgroundColor = ColorWhite
             self.addSubview(bottomView)
             
+            let leftView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: itemWidth, height: 45 + safeAreaBottomHeight))
+            leftView.backgroundColor = ColorSmoke
+            bottomView.addSubview(leftView)
+            
             let defaultEmotion = UIImageView.init(frame: CGRect.init(origin: .zero, size: CGSize.init(width: itemWidth, height: 45)))
-            defaultEmotion.backgroundColor = ColorSmoke
             defaultEmotion.contentMode = .center
             defaultEmotion.image = UIImage.init(named: "default_emoticon_cover")
-            bottomView.addSubview(defaultEmotion)
+            leftView.addSubview(defaultEmotion)
             
             send = UIButton.init(frame: CGRect.init(x: screenWidth - 60 - 15, y: 10, width: 60, height: 25))
             
