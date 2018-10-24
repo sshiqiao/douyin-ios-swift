@@ -73,7 +73,7 @@ class UserInfoHeader: UICollectionReusableView {
         avatarBackground.contentMode = .scaleAspectFill
         self.addSubview(avatarBackground)
         
-        let blurEffect = UIBlurEffect.init(style: UIBlurEffectStyle.dark)
+        let blurEffect = UIBlurEffect.init(style: UIBlurEffect.Style.dark)
         let visualEffectView = UIVisualEffectView.init(effect: blurEffect)
         visualEffectView.frame = self.bounds
         visualEffectView.alpha = 1
@@ -317,7 +317,7 @@ extension UserInfoHeader {
     
     func overScrollAction(offsetY:CGFloat)  {
         //计算背景容器缩放比例
-        let scaleRatio:CGFloat = fabs(offsetY)/370.0
+        let scaleRatio:CGFloat = abs(offsetY)/370.0
         //计算容器缩放后y方向的偏移量
         let overScaleHeight:CGFloat = (370.0 * scaleRatio)/2.0
         //缩放同时平移背景容器
@@ -392,7 +392,7 @@ extension UserInfoHeader {
         let animationGroup = CAAnimationGroup.init()
         animationGroup.duration = DEFAULT_ANIMATION_TIME
         animationGroup.isRemovedOnCompletion = false
-        animationGroup.fillMode = kCAFillModeForwards
+        animationGroup.fillMode = CAMediaTimingFillMode.forwards
         
         let layer = focusButton.layer
         let maskLayer = CAShapeLayer.init()
@@ -427,7 +427,7 @@ extension UserInfoHeader {
         let animationGroup = CAAnimationGroup.init()
         animationGroup.duration = DEFAULT_ANIMATION_TIME
         animationGroup.isRemovedOnCompletion = false
-        animationGroup.fillMode = kCAFillModeForwards
+        animationGroup.fillMode = CAMediaTimingFillMode.forwards
         
         let layer = focusIcon.layer
         let maskLayer = CAShapeLayer.init()

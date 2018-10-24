@@ -264,7 +264,7 @@ class CommentListCell:UITableViewCell {
     var likeNum = UILabel.init()
     var date = UILabel.init()
     var splitLine = UIView.init()
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
         self.backgroundColor = ColorClear
@@ -363,7 +363,7 @@ class CommentListCell:UITableViewCell {
     
     static func cellHeight(comment:Comment) -> CGFloat {
         let attributedString = NSMutableAttributedString.init(string: comment.text ?? "")
-        attributedString.addAttributes([NSAttributedStringKey.font : MediumFont], range: NSRange.init(location: 0, length: attributedString.length))
+        attributedString.addAttributes([NSAttributedString.Key.font : MediumFont], range: NSRange.init(location: 0, length: attributedString.length))
         let size:CGSize = attributedString.multiLineSize(width: MaxContentWidth)
         return size.height + 30 + 30
     }
@@ -424,7 +424,7 @@ class CommentTextView:UIView, UITextViewDelegate {
         textView.isScrollEnabled = false
         textView.textContainer.lineBreakMode = .byTruncatingTail
         textView.textContainer.lineFragmentPadding = 0
-        textView.textContainerInset = UIEdgeInsetsMake(topBottomInset, leftInset, topBottomInset, rightInset)
+        textView.textContainerInset = UIEdgeInsets(top: topBottomInset, left: leftInset, bottom: topBottomInset, right: rightInset)
         textHeight = textView.font?.lineHeight ?? 0
         
         placeHolderLabel.frame = CGRect.init(x:LEFT_INSET, y:0, width:screenWidth - LEFT_INSET - RIGHT_INSET, height:50)
@@ -440,8 +440,8 @@ class CommentTextView:UIView, UITextViewDelegate {
         textView.delegate = self
         container.addSubview(textView)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func layoutSubviews() {

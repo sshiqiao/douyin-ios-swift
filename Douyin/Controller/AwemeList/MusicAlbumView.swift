@@ -62,8 +62,8 @@ class MusicAlbumView:UIView {
         animationGroup.beginTime = CACurrentMediaTime() + delayTime
         animationGroup.repeatCount = .infinity
         animationGroup.isRemovedOnCompletion = false
-        animationGroup.fillMode = kCAFillModeForwards
-        animationGroup.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionLinear)
+        animationGroup.fillMode = CAMediaTimingFillMode.forwards
+        animationGroup.timingFunction = CAMediaTimingFunction.init(name: CAMediaTimingFunctionName.linear)
         
         let pathAnim = CAKeyframeAnimation.init(keyPath: "position")
         

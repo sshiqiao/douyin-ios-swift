@@ -52,7 +52,7 @@ class AwemeListCell: UITableViewCell {
     var onPlayerReady:OnPlayerReady?
     var isPlayerReady:Bool = false
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
         self.backgroundColor = ColorClear
@@ -347,7 +347,7 @@ extension AwemeListCell {
     func showLikeViewAnim(newPoint:CGPoint, oldPoint:CGPoint) {
         let likeImageView = UIImageView.init(image: UIImage.init(named: "icon_home_like_after"))
         var k = (oldPoint.y - newPoint.y) / (oldPoint.x - newPoint.x)
-        k = fabs(k) < 0.5 ? k : (k > 0 ? 0.5 : -0.5)
+        k = abs(k) < 0.5 ? k : (k > 0 ? 0.5 : -0.5)
         let angle = .pi/4 * -k
         likeImageView.frame = CGRect.init(origin: newPoint, size: CGSize.init(width: 80, height: 80))
         likeImageView.transform = CGAffineTransform.init(scaleX: 0.8, y: 1.8).concatenating(CGAffineTransform.init(rotationAngle: angle))
@@ -374,7 +374,7 @@ extension AwemeListCell {
             animationGroup.duration = 0.5
             animationGroup.beginTime = CACurrentMediaTime()
             animationGroup.repeatCount = .infinity
-            animationGroup.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseInEaseOut)
+            animationGroup.timingFunction = CAMediaTimingFunction.init(name: CAMediaTimingFunctionName.easeInEaseOut)
             
             let scaleAnim = CABasicAnimation.init()
             scaleAnim.keyPath = "transform.scale.x"
@@ -420,7 +420,7 @@ extension AwemeListCell: AVPlayerUpdateDelegate {
         
     }
     
-    func onPlayItemStatusUpdate(status: AVPlayerItemStatus) {
+    func onPlayItemStatusUpdate(status: AVPlayerItem.Status) {
         switch status {
         case .unknown:
             startLoadingPlayItemAnim()

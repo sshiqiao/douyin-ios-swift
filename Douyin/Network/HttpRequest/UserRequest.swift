@@ -18,9 +18,9 @@ class UserRequest: BaseRequest {
         NetworkManager.getRequest(urlPath: FIND_USER_BY_UID_URL, request: request, success: { data in
             let response = UserResponse.deserialize(from: data as? [String:Any])
             success(response?.data ?? User.init())
-        }) { error in
+        }, failure: { error in
             failure(error)
-        }
+        })
     }
     
 }

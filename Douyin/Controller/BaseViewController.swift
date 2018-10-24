@@ -44,7 +44,7 @@ class BaseViewController: UIViewController {
     }
     
     func setNavigationBarTitleColor(color:UIColor) {
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:color]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:color]
     }
     
     func setNavigationBarBackgroundColor(color:UIColor) {
@@ -86,7 +86,7 @@ class BaseViewController: UIViewController {
         leftButton.addTarget(self, action: #selector(pop), for: .touchUpInside);
         self.view.addSubview(leftButton)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0 , execute: {
-            self.view.bringSubview(toFront: leftButton)
+            self.view.bringSubviewToFront(leftButton)
         })
     }
     

@@ -20,9 +20,9 @@ class GroupChatListRequest: BaseRequest {
         NetworkManager.getRequest(urlPath: FIND_GROUP_CHAT_BY_PAGE_URL, request: request, success: { data in
             let response = GroupChatListResponse.deserialize(from: data as? [String:Any])
             success(response!)
-        }) { error in
+        }, failure: { error in
             failure(error)
-        }
+        })
     }
     
 }

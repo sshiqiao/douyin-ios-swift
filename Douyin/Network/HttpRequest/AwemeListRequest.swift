@@ -23,9 +23,9 @@ class AwemeListRequest: BaseRequest {
             if let response = AwemeListResponse.deserialize(from: data as? [String:Any]) {
                 success(response)
             }
-        }) { error in
+        }, failure: { error in
             failure(error)
-        }
+        })
     }
     
     static func findFavoriteAwemesPaged(uid:String, page:Int, _ size:Int = 20, success:@escaping HttpSuccess, failure:@escaping HttpFailure) {

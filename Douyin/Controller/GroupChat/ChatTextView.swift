@@ -106,7 +106,7 @@ class ChatTextView:UIView {
         textView.addSubview(photoBtn)
         
         self.addObserver(self, forKeyPath: "containerBoardHeight", options: [.initial,.new], context: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -303,27 +303,26 @@ extension ChatTextView:UIGestureRecognizerDelegate {
                 }
                 break
             case PHOTO_TAG:
-                PHPhotoLibrary.requestAuthorization { status in
-                    if status == .authorized {
-                        DispatchQueue.main.async {[weak self] in
-                            self?.photoBtn.isSelected = !(self?.photoBtn.isSelected)!
-                            self?.emotionBtn.isSelected = false
-                            if (self?.photoBtn.isSelected)! {
-                                self?.editMessageType = .EditPhotoMessage
-                                self?.containerBoardHeight = PHOTO_SELECTOR_HEIGHT
-                                self?.updateContainerFrame()
-                                self?.updateSelectorFrame(animated: true)
-                                self?.textView.resignFirstResponder()
-                            } else {
-                                self?.hideContainerBoard()
-                            }
+                let status = PHPhotoLibrary.authorizationStatus()
+                if status == .authorized {
+                    DispatchQueue.main.async {[weak self] in
+                        self?.photoBtn.isSelected = !(self?.photoBtn.isSelected)!
+                        self?.emotionBtn.isSelected = false
+                        if (self?.photoBtn.isSelected)! {
+                            self?.editMessageType = .EditPhotoMessage
+                            self?.containerBoardHeight = PHOTO_SELECTOR_HEIGHT
+                            self?.updateContainerFrame()
+                            self?.updateSelectorFrame(animated: true)
+                            self?.textView.resignFirstResponder()
+                        } else {
+                            self?.hideContainerBoard()
                         }
-                    } else {
-                        UIWindow.showTips(text: "请在设置中开启图库读取权限")
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now(), execute: {
-                            UIApplication.shared.openURL(URL.init(string: UIApplicationOpenSettingsURLString)!)
-                        })
                     }
+                } else {
+                    UIWindow.showTips(text: "请在设置中开启图库读取权限")
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0, execute: {
+                        UIApplication.shared.openURL(URL.init(string: UIApplication.openSettingsURLString)!)
+                    })
                 }
                 break
             default:

@@ -20,9 +20,9 @@ class PostGroupChatTextRequest: BaseRequest {
         NetworkManager.postRequest(urlPath: POST_GROUP_CHAT_TEXT_URL, request: request, success: { data in
             let response = GroupChatResponse.deserialize(from: data as? [String:Any])
             success(response!)
-        }) { error in
+        }, failure: { error in
             failure(error)
-        }
+        })
     }
     
 }

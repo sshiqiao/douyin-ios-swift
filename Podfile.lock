@@ -1,32 +1,32 @@
 PODS:
-  - Alamofire (4.7.2)
-  - HandyJSON (4.1.1)
-  - libwebp (0.6.1):
-    - libwebp/core (= 0.6.1)
-    - libwebp/dec (= 0.6.1)
-    - libwebp/demux (= 0.6.1)
-    - libwebp/dsp (= 0.6.1)
-    - libwebp/enc (= 0.6.1)
-    - libwebp/mux (= 0.6.1)
-    - libwebp/utils (= 0.6.1)
-    - libwebp/webp (= 0.6.1)
-  - libwebp/core (0.6.1):
+  - Alamofire (4.7.3)
+  - HandyJSON (4.2.0)
+  - libwebp (1.0.0):
+    - libwebp/core (= 1.0.0)
+    - libwebp/dec (= 1.0.0)
+    - libwebp/demux (= 1.0.0)
+    - libwebp/dsp (= 1.0.0)
+    - libwebp/enc (= 1.0.0)
+    - libwebp/mux (= 1.0.0)
+    - libwebp/utils (= 1.0.0)
+    - libwebp/webp (= 1.0.0)
+  - libwebp/core (1.0.0):
     - libwebp/webp
-  - libwebp/dec (0.6.1):
+  - libwebp/dec (1.0.0):
     - libwebp/core
-  - libwebp/demux (0.6.1):
+  - libwebp/demux (1.0.0):
     - libwebp/core
-  - libwebp/dsp (0.6.1):
+  - libwebp/dsp (1.0.0):
     - libwebp/core
-  - libwebp/enc (0.6.1):
+  - libwebp/enc (1.0.0):
     - libwebp/core
-  - libwebp/mux (0.6.1):
+  - libwebp/mux (1.0.0):
     - libwebp/core
-  - libwebp/utils (0.6.1):
+  - libwebp/utils (1.0.0):
     - libwebp/core
-  - libwebp/webp (0.6.1)
-  - SnapKit (4.0.0)
-  - Starscream (3.0.5)
+  - libwebp/webp (1.0.0)
+  - SnapKit (4.2.0)
+  - Starscream (3.0.6)
 
 DEPENDENCIES:
   - Alamofire
@@ -44,12 +44,12 @@ SPEC REPOS:
     - Starscream
 
 SPEC CHECKSUMS:
-  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
-  HandyJSON: 3a3de917c4118767ffe41c29b5acba23409649f4
-  libwebp: 38b601da310fe7c329c638d0c0d10aed006a54fe
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  HandyJSON: 9dfc026c7d7adc1f0f8ba8b181495f0e0763b0f4
+  libwebp: e0c2a5daf37e99aeccd78bcdfe5587c70cb98572
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
 
-PODFILE CHECKSUM: a5087239355df7bb9e242dd7f4098124801125da
+PODFILE CHECKSUM: 148fe3e1609b6355eef80f56da81bc21c88b9cc8
 
 COCOAPODS: 1.5.0

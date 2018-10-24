@@ -18,7 +18,7 @@ class TextMessageCell:UITableViewCell {
     var chat:GroupChat?
     var onMenuAction:OnMenuAction?
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
         self.backgroundColor = ColorClear
@@ -187,7 +187,7 @@ class TextMessageCell:UITableViewCell {
         return CGRect.init(x: textView.bounds.midX - 60, y: 10, width: 120, height: 50)
     }
     
-    static func attributes() -> [NSAttributedStringKey:Any] {
+    static func attributes() -> [NSAttributedString.Key:Any] {
         return [.font: BigFont, .foregroundColor:ColorBlack]
     }
     

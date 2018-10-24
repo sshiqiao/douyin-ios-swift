@@ -45,7 +45,7 @@ class EmotionHelper:NSObject {
             attachment.bounds = CGRect.init(x: 0, y: EmotionFont.descender, width: EmotionFont.lineHeight, height: EmotionFont.lineHeight/((attachment.image?.size.width)!/(attachment.image?.size.height)!))
             let matchStr = NSAttributedString.init(attachment: attachment)
             let emotionStr = NSMutableAttributedString.init(attributedString: matchStr)
-            emotionStr.addAttribute(NSAttributedStringKey.font, value: EmotionFont, range: NSRange.init(location: 0, length: 1))
+            emotionStr.addAttribute(NSAttributedString.Key.font, value: EmotionFont, range: NSRange.init(location: 0, length: 1))
             attributedString.replaceCharacters(in: NSRange.init(location: range.location - lengthOffset, length: range.length), with: emotionStr)
             lengthOffset += (range.length - 1)
         }
@@ -91,7 +91,7 @@ class EmotionHelper:NSObject {
         attachment.bounds = CGRect.init(x: 0, y: EmotionFont.descender, width: EmotionFont.lineHeight, height: EmotionFont.lineHeight/((attachment.image?.size.width)!/(attachment.image?.size.height)!))
         let matchStr = NSAttributedString.init(attachment: attachment)
         let emotionStr = NSMutableAttributedString.init(attributedString: matchStr)
-        emotionStr.addAttribute(NSAttributedStringKey.font, value: EmotionFont, range: NSRange.init(location: 0, length: emotionStr.length))
+        emotionStr.addAttribute(NSAttributedString.Key.font, value: EmotionFont, range: NSRange.init(location: 0, length: emotionStr.length))
         let attrStr = NSMutableAttributedString.init(attributedString: str)
         
         attrStr.replaceCharacters(in: NSRange.init(location: index, length: 0), with: emotionStr)

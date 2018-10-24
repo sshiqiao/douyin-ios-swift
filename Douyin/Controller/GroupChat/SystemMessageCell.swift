@@ -13,7 +13,7 @@ class SystemMessageCell:UITableViewCell {
     
     var textView:UITextView = UITextView.init()
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
         self.backgroundColor = ColorClear
@@ -51,7 +51,7 @@ class SystemMessageCell:UITableViewCell {
         textView.attributedText = attributedString
     }
     
-    static func attributes() -> [NSAttributedStringKey:Any] {
+    static func attributes() -> [NSAttributedString.Key:Any] {
         return [.font: MediumFont, .foregroundColor:ColorGray]
     }
     

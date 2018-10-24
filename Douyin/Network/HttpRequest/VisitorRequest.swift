@@ -18,9 +18,9 @@ class VisitorRequest: BaseRequest {
         NetworkManager.postRequest(urlPath: CREATE_VISITOR_BY_UDID_URL, request: request, success: { data in
             let response = VisitorResponse.deserialize(from: data as? [String:Any])
             success(response!)
-        }) { error in
+        }, failure: { error in
             failure(error)
-        }
+        })
     }
     
 }

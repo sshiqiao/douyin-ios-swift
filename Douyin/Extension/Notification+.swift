@@ -12,10 +12,9 @@ extension Notification {
     
     func keyBoardHeight() -> CGFloat {
         if let userInfo = self.userInfo {
-            if let value = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            if let value = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
                 let size = value.cgRectValue.size
-                let orientation = UIApplication.shared.statusBarOrientation
-                return UIInterfaceOrientationIsLandscape(orientation) ? size.width : size.height
+                return UIInterfaceOrientation.portrait.isLandscape ? size.width : size.height
             }
         }
         return 0

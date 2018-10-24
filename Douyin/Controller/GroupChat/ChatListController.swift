@@ -75,7 +75,7 @@ class ChatListController: BaseViewController {
         tableView?.alwaysBounceVertical = true
         tableView?.separatorStyle = .none
         if #available(iOS 11.0, *) {
-            tableView?.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.never
+            tableView?.contentInsetAdjustmentBehavior = UIScrollView.ContentInsetAdjustmentBehavior.never
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
@@ -302,7 +302,7 @@ extension ChatListController:ChatTextViewDelegate {
     
     func onSendImages(images: [UIImage]) {
         for image in images {
-            if let data:Data = UIImageJPEGRepresentation(image, 1.0) {
+            if let data:Data = image.jpegData(compressionQuality: 1.0) {
                 let chat = GroupChat.initImageChat(image: image)
                 chat.visitor = Visitor.read()
                 chat.cellHeight = ChatListController.cellHeight(chat: chat)

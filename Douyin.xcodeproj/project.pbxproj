@@ -83,8 +83,6 @@
 		3BE431192111F314009CE381 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BE431172111F314009CE381 /* Main.storyboard */; };
 		3BE4311B2111F315009CE381 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BE4311A2111F315009CE381 /* Assets.xcassets */; };
 		3BE4311E2111F315009CE381 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BE4311C2111F315009CE381 /* LaunchScreen.storyboard */; };
-		3BE431292111F315009CE381 /* DouyinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE431282111F315009CE381 /* DouyinTests.swift */; };
-		3BE431342111F315009CE381 /* DouyinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE431332111F315009CE381 /* DouyinUITests.swift */; };
 		3BE431492111F55E009CE381 /* groupchats.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BE431422111F55E009CE381 /* groupchats.json */; };
 		3BE4314A2111F55E009CE381 /* Emoticons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3BE431432111F55E009CE381 /* Emoticons.bundle */; };
 		3BE4314B2111F55E009CE381 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BE431442111F55E009CE381 /* user.json */; };
@@ -107,23 +105,6 @@
 		3BE9315E211C77FA000F5B2A /* NSTextAttachment+Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9315D211C77FA000F5B2A /* NSTextAttachment+Emotion.swift */; };
 		63D681B2BE4B7A67F551D8FB /* libPods-Douyin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8786E3BE34F8002C11B460B8 /* libPods-Douyin.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		3BE431252111F315009CE381 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3BE431082111F314009CE381 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3BE4310F2111F314009CE381;
-			remoteInfo = Douyin;
-		};
-		3BE431302111F315009CE381 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3BE431082111F314009CE381 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3BE4310F2111F314009CE381;
-			remoteInfo = Douyin;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3B08FC0C2115745A0046E74B /* UserInfoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHeader.swift; sourceTree = "<group>"; };
@@ -205,12 +186,6 @@
 		3BE4311A2111F315009CE381 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BE4311D2111F315009CE381 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BE4311F2111F315009CE381 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3BE431242111F315009CE381 /* DouyinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DouyinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BE431282111F315009CE381 /* DouyinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouyinTests.swift; sourceTree = "<group>"; };
-		3BE4312A2111F315009CE381 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3BE4312F2111F315009CE381 /* DouyinUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DouyinUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BE431332111F315009CE381 /* DouyinUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouyinUITests.swift; sourceTree = "<group>"; };
-		3BE431352111F315009CE381 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BE431422111F55E009CE381 /* groupchats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = groupchats.json; sourceTree = "<group>"; };
 		3BE431432111F55E009CE381 /* Emoticons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Emoticons.bundle; sourceTree = "<group>"; };
 		3BE431442111F55E009CE381 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
@@ -248,20 +223,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3BE431212111F315009CE381 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3BE4312C2111F315009CE381 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -290,8 +251,6 @@
 			isa = PBXGroup;
 			children = (
 				3BE431122111F314009CE381 /* Douyin */,
-				3BE431272111F315009CE381 /* DouyinTests */,
-				3BE431322111F315009CE381 /* DouyinUITests */,
 				3BE431112111F314009CE381 /* Products */,
 				6CAF6207DCB8AF4B0911B5C7 /* Pods */,
 				9C8DBD9B5708A3ED9B1E576E /* Frameworks */,
@@ -302,8 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				3BE431102111F314009CE381 /* Douyin.app */,
-				3BE431242111F315009CE381 /* DouyinTests.xctest */,
-				3BE4312F2111F315009CE381 /* DouyinUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -326,24 +283,6 @@
 				3BE431612111FFB5009CE381 /* Douyin+bridging+Header.h */,
 			);
 			path = Douyin;
-			sourceTree = "<group>";
-		};
-		3BE431272111F315009CE381 /* DouyinTests */ = {
-			isa = PBXGroup;
-			children = (
-				3BE431282111F315009CE381 /* DouyinTests.swift */,
-				3BE4312A2111F315009CE381 /* Info.plist */,
-			);
-			path = DouyinTests;
-			sourceTree = "<group>";
-		};
-		3BE431322111F315009CE381 /* DouyinUITests */ = {
-			isa = PBXGroup;
-			children = (
-				3BE431332111F315009CE381 /* DouyinUITests.swift */,
-				3BE431352111F315009CE381 /* Info.plist */,
-			);
-			path = DouyinUITests;
 			sourceTree = "<group>";
 		};
 		3BE431412111F4E3009CE381 /* Resource */ = {
@@ -579,42 +518,6 @@
 			productReference = 3BE431102111F314009CE381 /* Douyin.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3BE431232111F315009CE381 /* DouyinTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3BE4313B2111F315009CE381 /* Build configuration list for PBXNativeTarget "DouyinTests" */;
-			buildPhases = (
-				3BE431202111F315009CE381 /* Sources */,
-				3BE431212111F315009CE381 /* Frameworks */,
-				3BE431222111F315009CE381 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3BE431262111F315009CE381 /* PBXTargetDependency */,
-			);
-			name = DouyinTests;
-			productName = DouyinTests;
-			productReference = 3BE431242111F315009CE381 /* DouyinTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		3BE4312E2111F315009CE381 /* DouyinUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3BE4313E2111F315009CE381 /* Build configuration list for PBXNativeTarget "DouyinUITests" */;
-			buildPhases = (
-				3BE4312B2111F315009CE381 /* Sources */,
-				3BE4312C2111F315009CE381 /* Frameworks */,
-				3BE4312D2111F315009CE381 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3BE431312111F315009CE381 /* PBXTargetDependency */,
-			);
-			name = DouyinUITests;
-			productName = DouyinUITests;
-			productReference = 3BE4312F2111F315009CE381 /* DouyinUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -627,14 +530,6 @@
 				TargetAttributes = {
 					3BE4310F2111F314009CE381 = {
 						CreatedOnToolsVersion = 9.4.1;
-					};
-					3BE431232111F315009CE381 = {
-						CreatedOnToolsVersion = 9.4.1;
-						TestTargetID = 3BE4310F2111F314009CE381;
-					};
-					3BE4312E2111F315009CE381 = {
-						CreatedOnToolsVersion = 9.4.1;
-						TestTargetID = 3BE4310F2111F314009CE381;
 					};
 				};
 			};
@@ -652,8 +547,6 @@
 			projectRoot = "";
 			targets = (
 				3BE4310F2111F314009CE381 /* Douyin */,
-				3BE431232111F315009CE381 /* DouyinTests */,
-				3BE4312E2111F315009CE381 /* DouyinUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -673,20 +566,6 @@
 				3BE4314C2111F55E009CE381 /* comments.json in Resources */,
 				3BE4314D2111F55E009CE381 /* emotion.json in Resources */,
 				3BE4314E2111F55E009CE381 /* favorites.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3BE431222111F315009CE381 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3BE4312D2111F315009CE381 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,36 +686,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3BE431202111F315009CE381 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3BE431292111F315009CE381 /* DouyinTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3BE4312B2111F315009CE381 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3BE431342111F315009CE381 /* DouyinUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3BE431262111F315009CE381 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3BE4310F2111F314009CE381 /* Douyin */;
-			targetProxy = 3BE431252111F315009CE381 /* PBXContainerItemProxy */;
-		};
-		3BE431312111F315009CE381 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3BE4310F2111F314009CE381 /* Douyin */;
-			targetProxy = 3BE431302111F315009CE381 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3BE431172111F314009CE381 /* Main.storyboard */ = {
@@ -915,6 +765,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -968,6 +819,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -985,10 +837,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.douyin.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = demo.douyin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Douyin/Douyin+bridging+Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1006,97 +858,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.douyin.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = demo.douyin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Douyin/Douyin+bridging+Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		3BE4313C2111F315009CE381 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6ZMJ9V9VNQ;
-				INFOPLIST_FILE = DouyinTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.swift.DouyinTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Douyin/Douyin+bridging+Header.h";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Douyin.app/Douyin";
-			};
-			name = Debug;
-		};
-		3BE4313D2111F315009CE381 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6ZMJ9V9VNQ;
-				INFOPLIST_FILE = DouyinTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.swift.DouyinTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Douyin/Douyin+bridging+Header.h";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Douyin.app/Douyin";
-			};
-			name = Release;
-		};
-		3BE4313F2111F315009CE381 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6ZMJ9V9VNQ;
-				INFOPLIST_FILE = DouyinUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.swift.DouyinUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Douyin/Douyin+bridging+Header.h";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Douyin;
-			};
-			name = Debug;
-		};
-		3BE431402111F315009CE381 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6ZMJ9V9VNQ;
-				INFOPLIST_FILE = DouyinUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.swift.DouyinUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Douyin/Douyin+bridging+Header.h";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Douyin;
 			};
 			name = Release;
 		};
@@ -1117,24 +883,6 @@
 			buildConfigurations = (
 				3BE431392111F315009CE381 /* Debug */,
 				3BE4313A2111F315009CE381 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3BE4313B2111F315009CE381 /* Build configuration list for PBXNativeTarget "DouyinTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3BE4313C2111F315009CE381 /* Debug */,
-				3BE4313D2111F315009CE381 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3BE4313E2111F315009CE381 /* Build configuration list for PBXNativeTarget "DouyinUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3BE4313F2111F315009CE381 /* Debug */,
-				3BE431402111F315009CE381 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

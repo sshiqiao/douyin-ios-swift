@@ -24,7 +24,7 @@ class HoverViewFlowLayout: UICollectionViewFlowLayout {
         let copyArray = superArray
         for index in 0..<copyArray.count {
             let attributes = copyArray[index]
-            if attributes.representedElementKind == UICollectionElementKindSectionHeader || attributes.representedElementKind == UICollectionElementKindSectionFooter {
+            if attributes.representedElementKind == UICollectionView.elementKindSectionHeader || attributes.representedElementKind == UICollectionView.elementKindSectionFooter {
                 if let idx = superArray.index(of: attributes) {
                     superArray.remove(at: idx)
                 }
@@ -32,10 +32,10 @@ class HoverViewFlowLayout: UICollectionViewFlowLayout {
         }
         
         //单独添加上一步移除的Header和Footer，单独添加是因为第一步只能获取当前在屏幕rect中显示的元素属性，当第一个Sectioin移除屏幕便无法获取Header和Footer，这是需要单独添加Header和Footer以及第二部单独移除Header和Footer的原因。
-        if let header = super.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: IndexPath.init(item: 0, section: 0)) {
+        if let header = super.layoutAttributesForSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, at: IndexPath.init(item: 0, section: 0)) {
             superArray.append(header)
         }
-        if let footer = super.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionFooter, at: IndexPath.init(item: 0, section: 0)) {
+        if let footer = super.layoutAttributesForSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, at: IndexPath.init(item: 0, section: 0)) {
             superArray.append(footer)
         }
         
@@ -44,7 +44,7 @@ class HoverViewFlowLayout: UICollectionViewFlowLayout {
             //判断是否是第一个section
             if attributes.indexPath.section == 0 {
                 //判断是否为Header类型
-                if attributes.representedElementKind == UICollectionElementKindSectionHeader {
+                if attributes.representedElementKind == UICollectionView.elementKindSectionHeader {
                     //获取Header的Frame
                     var rect = attributes.frame
                     //判断Header的bottom是否滑动到导航栏下方
@@ -58,7 +58,7 @@ class HoverViewFlowLayout: UICollectionViewFlowLayout {
                 }
                 
                 //判断是否为Footer类型
-                if attributes.representedElementKind == UICollectionElementKindSectionFooter {
+                if attributes.representedElementKind == UICollectionView.elementKindSectionFooter {
                     //获取Footer的Frame
                     var rect = attributes.frame
                     //判断Footer的top是否滑动到导航栏下方

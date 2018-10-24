@@ -42,8 +42,8 @@ class AwemeListController: BaseViewController {
         self.awemes = data
         self.data.append(data[currentIndex])
         NotificationCenter.default.addObserver(self, selector: #selector(statusBarTouchBegin), name: NSNotification.Name(rawValue: StatusBarTouchBeginNotification), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationBecomeActive), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationEnterBackground), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationBecomeActive), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -74,14 +74,14 @@ class AwemeListController: BaseViewController {
     
     func setUpView() {
         tableView = UITableView.init(frame: CGRect.init(x: 0, y: -screenHeight, width: screenWidth, height: screenHeight * 5))
-        tableView?.contentInset = UIEdgeInsetsMake(screenHeight, 0, screenHeight * 3, 0);
+        tableView?.contentInset = UIEdgeInsets(top: screenHeight, left: 0, bottom: screenHeight * 3, right: 0);
         tableView?.backgroundColor = ColorClear
         tableView?.delegate = self
         tableView?.dataSource = self
         tableView?.showsVerticalScrollIndicator = false
         tableView?.separatorStyle = .none
         if #available(iOS 11.0, *) {
-            tableView?.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.never
+            tableView?.contentInsetAdjustmentBehavior = UIScrollView.ContentInsetAdjustmentBehavior.never
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
@@ -99,7 +99,7 @@ class AwemeListController: BaseViewController {
             self.tableView?.reloadData()
             
             let curIndexPath = IndexPath.init(row: self.currentIndex, section: 0)
-            self.tableView?.scrollToRow(at: curIndexPath, at: UITableViewScrollPosition.middle, animated: false)
+            self.tableView?.scrollToRow(at: curIndexPath, at: UITableView.ScrollPosition.middle, animated: false)
             self.addObserver(self, forKeyPath: "currentIndex", options: [.initial, .new], context: nil)
         }
     }
@@ -191,7 +191,7 @@ extension AwemeListController:UIScrollViewDelegate {
                 self.currentIndex -= 1
             }
             UIView.animate(withDuration: 0.15, delay: 0.0, options: .curveEaseOut, animations: {
-                self.tableView?.scrollToRow(at: IndexPath.init(row: self.currentIndex, section: 0), at: UITableViewScrollPosition.top, animated: false)
+                self.tableView?.scrollToRow(at: IndexPath.init(row: self.currentIndex, section: 0), at: UITableView.ScrollPosition.top, animated: false)
             }, completion: { finished in
                 scrollView.panGestureRecognizer.isEnabled = true
             })

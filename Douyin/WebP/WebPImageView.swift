@@ -42,7 +42,7 @@ class WebPImageView: UIImageView {
         super.init(frame:.zero)
         self.backgroundColor = ColorClear
         displayLink = CADisplayLink.init(target: self, selector: #selector(startAnimation(link:)))
-        displayLink?.add(to: .current, forMode: .commonModes)
+        displayLink?.add(to: RunLoop.current, forMode: RunLoop.Mode.common)
         displayLink?.isPaused = true
         
         requestQueue.maxConcurrentOperationCount = 1
@@ -56,7 +56,7 @@ class WebPImageView: UIImageView {
         super.init(frame: frame)
         self.backgroundColor = ColorClear
         displayLink = CADisplayLink.init(target: self, selector: #selector(startAnimation(link:)))
-        displayLink?.add(to: .current, forMode: .commonModes)
+        displayLink?.add(to: RunLoop.current, forMode: RunLoop.Mode.common)
         displayLink?.isPaused = true
         
         requestQueue.maxConcurrentOperationCount = 1
@@ -72,7 +72,7 @@ class WebPImageView: UIImageView {
         self.image = image
         self.backgroundColor = ColorClear
         displayLink = CADisplayLink.init(target: self, selector: #selector(startAnimation(link:)))
-        displayLink?.add(to: .current, forMode: .commonModes)
+        displayLink?.add(to: RunLoop.current, forMode: RunLoop.Mode.common)
         displayLink?.isPaused = true
         
         requestQueue.maxConcurrentOperationCount = 1

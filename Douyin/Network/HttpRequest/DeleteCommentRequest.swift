@@ -20,9 +20,9 @@ class DeleteCommentRequest: BaseRequest {
         NetworkManager.deleteRequest(urlPath: DELETE_COMMENT_BY_ID_URL, request: request, success: { data in
             let response = BaseResponse.deserialize(from: data as? [String:Any])
             success(response!)
-        }) { error in
+        }, failure: { error in
             failure(error)
-        }
+        })
     }
     
 }

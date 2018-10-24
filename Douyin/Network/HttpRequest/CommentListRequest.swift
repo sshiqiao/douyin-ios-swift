@@ -22,9 +22,9 @@ class CommentListRequest: BaseRequest {
         NetworkManager.getRequest(urlPath: FIND_COMMENT_BY_PAGE_URL, request: request, success: { data in
             let response = CommentListResponse.deserialize(from: data as? [String:Any])
             success(response!)
-        }) { error in
+        }, failure: { error in
             failure(error)
-        }
+        })
     }
     
 }

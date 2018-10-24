@@ -84,11 +84,11 @@ extension String {
     
     
     func singleLineSizeWithText(font:UIFont) -> CGSize {
-        return self.size(withAttributes: [NSAttributedStringKey.font : font])
+        return self.size(withAttributes: [NSAttributedString.Key.font : font])
     }
     
     func singleLineSizeWithAttributeText(font:UIFont) -> CGSize {
-        let attributes = [NSAttributedStringKey.font:font]
+        let attributes = [NSAttributedString.Key.font:font]
         let attString = NSAttributedString(string: self,attributes: attributes)
         let framesetter = CTFramesetterCreateWithAttributedString(attString)
         return CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRange(location: 0,length: 0), nil, CGSize(width: Double.greatestFiniteMagnitude, height: Double.greatestFiniteMagnitude), nil)

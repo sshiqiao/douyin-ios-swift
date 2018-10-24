@@ -75,7 +75,7 @@ class UserHomePageController: BaseViewController {
         collectionView = UICollectionView.init(frame: screenFrame, collectionViewLayout: layout)
         collectionView?.backgroundColor = ColorClear
         if #available(iOS 11.0, *) {
-            collectionView?.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.never
+            collectionView?.contentInsetAdjustmentBehavior = UIScrollView.ContentInsetAdjustmentBehavior.never
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
@@ -83,8 +83,8 @@ class UserHomePageController: BaseViewController {
         collectionView?.showsVerticalScrollIndicator = false
         collectionView?.delegate = self
         collectionView?.dataSource = self
-        collectionView?.register(UserInfoHeader.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: USER_INFO_HEADER)
-        collectionView?.register(SlideTabBarFooter.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: SLIDE_TABBAR_FOOTER)
+        collectionView?.register(UserInfoHeader.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: USER_INFO_HEADER)
+        collectionView?.register(SlideTabBarFooter.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SLIDE_TABBAR_FOOTER)
         collectionView?.register(AwemeCollectionCell.classForCoder(), forCellWithReuseIdentifier: AWEME_COLLECTION_CELL)
         self.view.addSubview(collectionView!)
         
@@ -201,8 +201,8 @@ extension UserHomePageController: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if indexPath.section == 0 {
-            if kind == UICollectionElementKindSectionHeader {
-                let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: USER_INFO_HEADER, for: indexPath) as! UserInfoHeader
+            if kind == UICollectionView.elementKindSectionHeader {
+                let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: USER_INFO_HEADER, for: indexPath) as! UserInfoHeader
                 userInfoHeader = header
                 if let data = user {
                     header.initData(user: data)
@@ -210,7 +210,7 @@ extension UserHomePageController: UICollectionViewDataSource, UICollectionViewDe
                 }
                 return header
             } else {
-                let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: SLIDE_TABBAR_FOOTER, for: indexPath) as! SlideTabBarFooter
+                let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SLIDE_TABBAR_FOOTER, for: indexPath) as! SlideTabBarFooter
                 footer.delegate = self
                 footer.setLabel(titles: ["作品" + String(user?.aweme_count ?? 0),"喜欢" + String(user?.favoriting_count ?? 0)], tabIndex: tabIndex)
                 return footer

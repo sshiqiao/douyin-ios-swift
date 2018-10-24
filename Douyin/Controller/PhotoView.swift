@@ -88,7 +88,7 @@ class PhotoView: UIView {
     
     func show() {
         let window = UIApplication.shared.delegate?.window as? UIWindow
-        window?.windowLevel = UIWindowLevelStatusBar
+        window?.windowLevel = UIWindow.Level.statusBar
         window?.addSubview(self)
         UIView.animate(withDuration: 0.15) {
             self.imageView.alpha = 1.0
@@ -98,7 +98,7 @@ class PhotoView: UIView {
     
     func dismiss() {
         let window = UIApplication.shared.delegate?.window as? UIWindow
-        window?.windowLevel = UIWindowLevelNormal
+        window?.windowLevel = UIWindow.Level.normal
         UIView.animate(withDuration: 0.15, delay: 0.0, options: .curveLinear, animations: {
             self.imageView.alpha = 0.0
             self.container.alpha = 0.0

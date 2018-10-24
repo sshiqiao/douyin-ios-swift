@@ -15,7 +15,7 @@ protocol AVPlayerUpdateDelegate:NSObjectProtocol {
     //播放进度更新回调方法
     func onProgressUpdate(current:CGFloat, total:CGFloat)
     //播放状态更新回调方法
-    func onPlayItemStatusUpdate(status:AVPlayerItemStatus)
+    func onPlayItemStatusUpdate(status:AVPlayerItem.Status)
 }
 
 class AVPlayerView: UIView {
@@ -106,7 +106,7 @@ class AVPlayerView: UIView {
     func cancelLoading() {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        self.playerLayer.isHidden = true
+        playerLayer.isHidden = true
         CATransaction.commit()
         
         queryCacheOperation?.cancel()
@@ -115,6 +115,7 @@ class AVPlayerView: UIView {
         
         player = nil
         playerItem = nil
+        playerLayer.player = nil
         
         cancelLoadingQueue?.async {[weak self] in
             self?.urlAsset?.cancelLoading()
@@ -177,7 +178,7 @@ extension AVPlayerView {
                 playerLayer.isHidden = false
                 CATransaction.commit()
             }
-            delegate?.onPlayItemStatusUpdate(status: playerItem?.status ?? AVPlayerItemStatus.unknown)
+            delegate?.onPlayItemStatusUpdate(status: playerItem?.status ?? AVPlayerItem.Status.unknown)
         } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }

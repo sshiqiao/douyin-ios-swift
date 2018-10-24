@@ -35,8 +35,8 @@ class FocusView:UIImageView {
         animationGroup.delegate = self
         animationGroup.duration = 1.25
         animationGroup.isRemovedOnCompletion = false
-        animationGroup.fillMode = kCAFillModeForwards
-        animationGroup.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animationGroup.fillMode = CAMediaTimingFillMode.forwards
+        animationGroup.timingFunction = CAMediaTimingFunction.init(name: CAMediaTimingFunctionName.easeInEaseOut)
         
         let scaleAnim = CAKeyframeAnimation.init(keyPath: "transform.scale")
         scaleAnim.values = [1.0, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 0.0]

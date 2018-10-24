@@ -19,9 +19,9 @@ class PostGroupChatImageRequest: BaseRequest {
         }, success: { data in
             let response = GroupChatResponse.deserialize(from: data as? [String:Any])
             success(response!)
-        }) { error in
+        }, failure: { error in
             failure(error)
-        }
+        })
     }
     
 }

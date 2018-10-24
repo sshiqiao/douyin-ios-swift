@@ -108,7 +108,7 @@ class SharePopView:UIView {
         }
         
         cancel.frame = CGRect.init(x: 0, y: 230, width: screenWidth, height: 50 + safeAreaBottomHeight)
-        cancel.titleEdgeInsets = UIEdgeInsetsMake(-safeAreaBottomHeight, 0, 0, 0)
+        cancel.titleEdgeInsets = UIEdgeInsets(top: -safeAreaBottomHeight, left: 0, bottom: 0, right: 0)
         cancel.setTitle("取消", for: .normal)
         cancel.setTitleColor(ColorWhite, for: .normal)
         cancel.titleLabel?.font = BigFont

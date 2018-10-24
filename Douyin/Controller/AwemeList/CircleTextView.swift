@@ -78,8 +78,8 @@ class CircleTextView:UIView {
     
     func initSubLayer() {
         textSeparateWidth = SEPARATE_TEXT.singleLineSizeWithText(font: font).width
-        textLayer.alignmentMode = kCAAlignmentNatural
-        textLayer.truncationMode = kCATruncationNone
+        textLayer.alignmentMode = CATextLayerAlignmentMode.natural
+        textLayer.truncationMode = CATextLayerTruncationMode.none
         textLayer.isWrapped = false
         textLayer.contentsScale = UIScreen.main.scale
         self.layer.addSublayer(textLayer)
@@ -114,8 +114,8 @@ class CircleTextView:UIView {
         anim.repeatCount = MAXFLOAT
         anim.isRemovedOnCompletion = false
         
-        anim.fillMode = kCAFillModeForwards;
-        anim.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionLinear)
+        anim.fillMode = CAMediaTimingFillMode.forwards;
+        anim.timingFunction = CAMediaTimingFunction.init(name: CAMediaTimingFunctionName.linear)
         
         textLayer.add(anim, forKey: nil)
     }

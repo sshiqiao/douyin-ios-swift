@@ -27,7 +27,11 @@ class AVPlayerManager: NSObject {
     
     static func setAudioMode() {
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            if #available(iOS 10.0, *) {
+                try! AVAudioSession.sharedInstance().setCategory(.playback, mode: .moviePlayback)
+            } else {
+                AVAudioSession.sharedInstance().perform(NSSelectorFromString("setCategory:error:"), with: AVAudioSession.Category.playback)
+            }
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {
             print("setAudioMode error:" + error.localizedDescription)
@@ -62,7 +66,7 @@ class AVPlayerManager: NSObject {
             object.pause()
         }
         if playerArray.contains(player) {
-            player.seek(to: kCMTimeZero)
+            player.seek(to: CMTime.zero)
             play(player: player)
         } else {
             playerArray.append(player)

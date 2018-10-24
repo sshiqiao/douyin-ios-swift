@@ -23,9 +23,9 @@ class PostCommentRequest: BaseRequest {
         NetworkManager.postRequest(urlPath: POST_COMMENT_URL, request: request, success: { data in
             let response = CommentResponse.deserialize(from: data as? [String:Any])
             success(response!)
-        }) { error in
+        }, failure: { error in
             failure(error)
-        }
+        })
     }
     
 }

@@ -69,8 +69,8 @@ class FavoriteView:UIView {
                 
                 let group = CAAnimationGroup.init()
                 group.isRemovedOnCompletion = false
-                group.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseInEaseOut)
-                group.fillMode = kCAFillModeForwards
+                group.timingFunction = CAMediaTimingFunction.init(name: CAMediaTimingFunctionName.easeInEaseOut)
+                group.fillMode = CAMediaTimingFillMode.forwards
                 group.duration = CFTimeInterval(duration)
                 
                 let scaleAnim = CABasicAnimation.init(keyPath: "transform.scale")

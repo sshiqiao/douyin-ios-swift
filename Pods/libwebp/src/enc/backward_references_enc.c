@@ -591,7 +591,7 @@ static int BackwardReferencesLz77Box(int xsize, int ysize,
   for (i = 1; i < pix_count; ++i) {
     int ind;
     int best_length = VP8LHashChainFindLength(hash_chain_best, i);
-    int best_offset = 0;
+    int best_offset;
     int do_compute = 1;
 
     if (best_length >= MAX_LENGTH) {
