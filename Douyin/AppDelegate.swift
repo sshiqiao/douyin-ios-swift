@@ -22,11 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         AVPlayerManager.setAudioMode()
-        
         NetworkManager.startMonitoring()
-        
         WebSocketManger.shared().connect()
-        
         requestPermission()
 
         VisitorRequest.saveOrFindVisitor(success: { data in

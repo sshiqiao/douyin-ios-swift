@@ -126,9 +126,9 @@ class AwemeListController: BaseViewController {
                         self?.loadMore?.loadingAll()
                     }
                 }
-            }) { error in
+            }, failure: { error in
                 self.loadMore?.loadingFailed()
-            }
+            })
         } else {
             AwemeListRequest.findFavoriteAwemesPaged(uid: uid ?? "", page: page, size, success: {[weak self] data in
                 if let response = data as? AwemeListResponse {
@@ -149,9 +149,9 @@ class AwemeListController: BaseViewController {
                         self?.loadMore?.loadingAll()
                     }
                 }
-            }) { error in
+            }, failure: { error in
                 self.loadMore?.loadingFailed()
-            }
+            })
         }
     }
     

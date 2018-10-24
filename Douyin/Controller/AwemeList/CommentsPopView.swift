@@ -105,9 +105,9 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
                 UIView.setAnimationsEnabled(true)
             }
             UIWindow.showTips(text: "评论成功")
-        }) { error in
+        }, failure: { error in
             UIWindow.showTips(text: "评论失败")
-        }
+        })
     }
     
     func deleteComment(comment:Comment){
@@ -123,9 +123,9 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
             } else {
                 UIWindow.showTips(text: "评论删除失败")
             }
-        }) { error in
+        }, failure: { error in
             UIWindow.showTips(text: "评论删除失败")
-        }
+        })
     }
     
     func loadData(page:Int, _ size:Int = 20) {
@@ -151,9 +151,9 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
                 self?.loadMore?.loadingAll()
             }
             self?.label.text = String.init(response.total_count) + "条评论"
-        }) {[weak self] error in
+        }, failure: {[weak self] error in
             self?.loadMore?.loadingFailed()
-        }
+        })
     }
     
     override func layoutSubviews() {

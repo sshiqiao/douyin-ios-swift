@@ -115,9 +115,9 @@ class ChatListController: BaseViewController {
                 }
                 UIView.setAnimationsEnabled(true)
             }
-        }) {[weak self] error in
+        }, failure: {[weak self] error in
             self?.refreshControl.endRefresh()
-        }
+        })
     }
     
     func processData(data:[GroupChat]) {
@@ -166,9 +166,9 @@ class ChatListController: BaseViewController {
                     self?.data.removeAtIndexes(indexs: indexs)
                     self?.tableView?.deleteRows(at: indexPaths, with: .right)
                     self?.tableView?.endUpdates()
-                }) { error in
+                }, failure: { error in
                     UIWindow.showTips(text: "删除失败")
-                }
+                })
             }
         }
     }
@@ -291,11 +291,11 @@ extension ChatListController:ChatTextViewDelegate {
                     chat.updateTempTextChat(chat: response.data!)
                     self?.tableView?.reloadRows(at: [IndexPath.init(row: index, section: 0)], with: .none)
                 }
-            }) {[weak self] error in
+            }, failure: {[weak self] error in
                 chat.isCompleted = false
                 chat.isFailed = true
                 self?.tableView?.reloadRows(at: [IndexPath.init(row: index, section: 0)], with: .none)
-            }
+            })
         }
         
     }
@@ -327,14 +327,14 @@ extension ChatListController:ChatTextViewDelegate {
                                 chat.updateTempImageChat(chat: response.data!)
                                 self?.tableView?.reloadRows(at: [IndexPath.init(row: index, section: 0)], with: .none)
                             }
-                    }) {[weak self] error in
+                    }, failure: {[weak self] error in
                         chat.percent = 0
                         chat.isCompleted = false
                         chat.isFailed = true
                         if let cell = self?.tableView?.cellForRow(at: IndexPath.init(row: index, section: 0)) as? ImageMessageCell {
                             cell.updateUploadStatus(chat:chat)
                         }
-                    }
+                    })
                 }
             }
         }

@@ -402,9 +402,9 @@ extension AwemeListCell: SendTextDelegate, HoverTextViewDelegate {
         if let aweme_id = aweme?.aweme_id {
             PostCommentRequest.postCommentText(aweme_id:aweme_id, text: text, success: { data in
                 UIWindow.showTips(text: "评论成功")
-            }) { error in
+            }, failure: { error in
                 UIWindow.showTips(text: "评论失败")
-            }
+            })
         }
     }
     

@@ -112,9 +112,9 @@ class UserHomePageController: BaseViewController {
             self?.user = data as? User
             self?.setNavigationBarTitle(title: self?.user?.nickname ?? "")
             self?.collectionView?.reloadSections(IndexSet.init(integer: 0))
-        }) { error in
+        }, failure: { error in
             UIWindow.showTips(text: error.localizedDescription)
-        }
+        })
     }
     
     func loadData(page:Int, _ size:Int = 21) {
@@ -143,9 +143,9 @@ class UserHomePageController: BaseViewController {
                         }
                     })
                 }
-            }) { error in
+            }, failure:{ error in
                 self.loadMore?.loadingFailed()
-            }
+            })
         } else {
             AwemeListRequest.findFavoriteAwemesPaged(uid: uid, page: page, size, success: {[weak self] data in
                 if let response = data as? AwemeListResponse {
@@ -171,9 +171,9 @@ class UserHomePageController: BaseViewController {
                         }
                     })
                 }
-            }) { error in
+            }, failure: { error in
                 self.loadMore?.loadingFailed()
-            }
+            })
         }
     }
 }
